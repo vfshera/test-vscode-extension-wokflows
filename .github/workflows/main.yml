@@ -41,7 +41,6 @@ jobs:
     name: Publish Extension
     needs:
       - build
-    # if: github.event_name == 'release'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
