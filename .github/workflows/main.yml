@@ -76,8 +76,3 @@ jobs:
           args: "publish -p $VSCE_TOKEN"
         env:
           VSCE_TOKEN: ${{ secrets.VSCE_PAT }}
-      #   uses: HaaLeo/publish-vscode-extension@v1
-      #   with:
-      #     pat: ${{ secrets.VSCE_PAT }}
-      #     extensionFile: ${{ needs.build.outputs.vsixPath }}
-      #     registryUrl: https://marketplace.visualstudio.com
