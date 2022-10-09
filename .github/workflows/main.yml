@@ -49,6 +49,7 @@ jobs:
 
       - name: Checkout Source
         uses: actions/checkout@v2
+
       - name: Install Node v16
         uses: actions/setup-node@v1
         with:
@@ -60,7 +61,7 @@ jobs:
       - name: Download Build Artifact
         uses: actions/download-artifact@v2
         with:
-          name: ubuntu-latest
+          name: extension
 
       - name: GitHub Release
         uses: softprops/action-gh-release@v1
