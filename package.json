@@ -2,7 +2,7 @@
   "name": "test-extension",
   "displayName": "test extension",
   "description": "vscode test extension with github workflows",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {},
   "engines": {
     "vscode": "^1.72.0"
