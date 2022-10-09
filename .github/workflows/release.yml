@@ -8,8 +8,8 @@ on:
 jobs:
   create-release:
     runs-on: ubuntu-latest
-    outputs:
-      vsixPath: ${{ steps.packageExtension.outputs.vsixPath }}
+    # outputs:
+    #   vsixPath: ${{ steps.packageExtension.outputs.vsixPath }}
     steps:
       - name: Checkout Source
         uses: actions/checkout@v2
@@ -29,19 +29,19 @@ jobs:
           pat: stub
           dryRun: true
 
-      - name: Upload Extension Package as Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: extension
-          path: ${{ steps.packageExtension.outputs.vsixPath }}
+      # - name: Upload Extension Package as Artifact
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: extension
+      #     path: ${{ steps.packageExtension.outputs.vsixPath }}
 
-      - name: Download Build Artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: extension
+      # - name: Download Build Artifact
+      #   uses: actions/download-artifact@v2
+      #   with:
+      #     name: extension
 
-      - name: List Artifacts
-        run: ls -R
+      # - name: List Artifacts
+      #   run: ls -R
 
       - name: GitHub Release
         uses: softprops/action-gh-release@v1
@@ -50,4 +50,4 @@ jobs:
           name: ${{ github.ref_name }}
           fail_on_unmatched_files: true
           files: |
-            ${{ outputs.vsixPath }}
+            ${{ steps.packageExtension.outputs.vsixPath }}
