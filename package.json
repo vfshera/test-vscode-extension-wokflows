@@ -1,9 +1,14 @@
 {
-  "name": "test-extension",
-  "displayName": "test extension",
-  "description": "vscode test extension with github workflows",
-  "version": "0.0.2",
-  "repository": {},
+  "name": "vscodeworkflowtest",
+  "displayName": "Extension Auto Published by Github",
+  "description": "Vs Code test extension with github workflows",
+  "publisher": "FranklinShera",
+  "version": "0.0.3",
+  "repository": {
+    "url": "https://github.com/franklinshera/test-vscode-extension-wokflows",
+    "type": "git"
+  },
+  "license": "MIT",
   "engines": {
     "vscode": "^1.72.0"
   },
@@ -11,13 +16,13 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:test-extension.helloWorld"
+    "onCommand:vscodeworkflowtest.helloWorld"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "test-extension.helloWorld",
+        "command": "vscodeworkflowtest.helloWorld",
         "title": "Hello World"
       }
     ]
