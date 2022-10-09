@@ -40,6 +40,9 @@ jobs:
         with:
           name: extension
 
+      - name: List Artifacts
+        run: ls -R
+
       - name: GitHub Release
         uses: softprops/action-gh-release@v1
         with:
@@ -47,4 +50,4 @@ jobs:
           name: ${{ github.ref_name }}
           fail_on_unmatched_files: true
           files: |
-            ${{ create-release.outputs.vsixPath }}
+            ${{ outputs.vsixPath }}
