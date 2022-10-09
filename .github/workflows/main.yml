@@ -24,15 +24,12 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Publish Extension
+      - name: Package Extension
         id: packageExtension
         uses: HaaLeo/publish-vscode-extension@v1
         with:
-          # pat: stub
-          # dryRun: true
-          pat: ${{ secrets.VSCE_PAT }}
-          extensionFile: ${{ needs.build.outputs.vsixPath }}
-          registryUrl: https://marketplace.visualstudio.com
+          pat: stub
+          dryRun: true
 
       - name: Upload Extension Package as Artifact
         uses: actions/upload-artifact@v2
@@ -41,7 +38,7 @@ jobs:
           path: ${{ steps.packageExtension.outputs.vsixPath }}
 
   publish:
-    name: Add Release
+    name: Publish Extension
     needs:
       - build
     runs-on: ubuntu-latest
@@ -72,11 +69,10 @@ jobs:
           fail_on_unmatched_files: true
           files: |
             ${{ needs.build.outputs.vsixPath }}
-            CHANGELOG.md
 
-      # - name: Publish to Visual Studio Marketplace
-      #   uses: HaaLeo/publish-vscode-extension@v1
-      #   with:
-      #     pat: ${{ secrets.VSCE_PAT }}
-      #     extensionFile: ${{ needs.build.outputs.vsixPath }}
-      #     registryUrl: https://marketplace.visualstudio.com
+      - name: Publish to Visual Studio Marketplace
+        uses: HaaLeo/publish-vscode-extension@v1
+        with:
+          pat: ${{ secrets.VSCE_PAT }}
+          extensionFile: ${{ needs.build.outputs.vsixPath }}
+          registryUrl: https://marketplace.visualstudio.com
