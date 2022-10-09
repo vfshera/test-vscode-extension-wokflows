@@ -3,7 +3,7 @@
   "displayName": "Extension Auto Published by Github",
   "description": "Vs Code test extension with github workflows",
   "publisher": "FranklinShera",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "repository": {
     "url": "https://github.com/franklinshera/test-vscode-extension-wokflows",
     "type": "git"

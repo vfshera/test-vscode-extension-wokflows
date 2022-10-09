@@ -1,9 +1,7 @@
-name: Build & Publish
+name: Creete Relese
 
 on:
   push:
-    branches:
-      - main
     tags:
       - "v*.*.*"
 
@@ -37,24 +35,6 @@ jobs:
           name: extension
           path: ${{ steps.packageExtension.outputs.vsixPath }}
 
-  publish:
-    name: Publish Extension
-    needs:
-      - build
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: Checkout Source
-        uses: actions/checkout@v2
-
-      - name: Install Node v16
-        uses: actions/setup-node@v1
-        with:
-          node-version: 16
-
-      - name: Install Dependencies
-        run: npm ci
-
       - name: Download Build Artifact
         uses: actions/download-artifact@v2
         with:
@@ -68,10 +48,3 @@ jobs:
           fail_on_unmatched_files: true
           files: |
             ${{ needs.build.outputs.vsixPath }}
-
-      - name: Publish to Visual Studio Marketplace
-        uses: lannonbr/vsce-action@3.0.0
-        with:
-          args: "publish -p $VSCE_TOKEN"
-        env:
-          VSCE_TOKEN: ${{ secrets.VSCE_PAT }}
